@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Yipai360 Photo Downloader",
+  "version": "0.2.0",
+  "description": "Download photos from Yipai360 album pages in Microsoft Edge.",
+  "permissions": ["downloads", "storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://www.yipai360.com/*",
+    "https://*.yipai360.com/*"
+  ],
+  "action": {
+    "default_title": "Yipai360 Downloader",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.yipai360.com/photolivepc/*",
+        "https://www.yipai360.com/photoliveh5/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
